@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userdashbord</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <hr>
+        <% user.forEach(function(user){%>
+           <div class="text-center" style="font-size: 35px; color: blue;">
+            Welcom <strong> <%= user.user_name%> </strong> Your Details are 
+           </div> 
+        
+        <table class="table table-bordered table-border text-center shadow">
+    
+            <tr>
+                <th>Your Id :</th>
+                <th>Your Name : </th>
+                <th>Your Email: </th>
+                <th>Your Password: </th>
+                <th>Action Edit: </th>
+            </tr>
+            <tr>
+               
+
+                        <th><%= user.user_id%></th>
+                        <th><%= user.user_name%></th>
+                        <th><%= user.user_email%></th>
+                        <th><%= user.user_password%></th>
+                        <td><a href="/edit/<%= user.user_id%>" class="btn btn-info"> Edit</a></td>
+                        
+             
+            </tr>
+            <hr>
+        
+        </table>
+        <hr>
+        <div class="text-center" style="font-size: 30px; color: rgb(240, 14, 14);">
+            Your Task is -: " <b><%= user.user_task%></b> "
+        </div>
+
+        <div class="text-center" style="font-size: larger; color: rgb(240, 14, 14); border-radius: 50%;">
+            <!-- <a href="/edit/<%= user.user_id%>" class="btn btn-info"> LogOut</a> -->
+            <br>
+             <a href="/" class="btn btn-info"> LogOut</a>
+        </div>
+
+        <%  }) %>
+    </div>
+</body>
+</html>

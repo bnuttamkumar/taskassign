@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashbord</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-md-9">
+                <a href="/assigntask" class="btn btn-success btn-lg btn-block"> To Assign Task Click Here</a>
+            </div>
+            <div class="col-md-3">
+                <a href="/" class="btn btn-info btn-lg btn-block"> LogOut</a>
+                </dev>
+            </div>
+            <br>
+        </div>
+        <hr>
+        <table class="table table-bordered table-border text-center shadow">
+            <tr>
+                <th>User Id</th>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th>User Task</th>
+                <th colspan="3">Action</th>
+
+            </tr>
+            <% users.forEach(function(user){ %>
+                <tr style="background-color: antiquewhite;">
+                    <td>
+                        <%= user.user_id%>
+                    </td>
+                    <td>
+                        <%= user.user_name%>
+                    </td>
+                    <td>
+                        <%= user.user_email%>
+                    </td>
+                    <td>
+                        <%= user.user_password%>
+                    </td>
+                    <td><a href="/delete/<%= user.user_id%>" class="btn btn-danger">Delete User</a></td>
+                    <td><a href="/deletetask/<%= user.user_id%>" class="btn btn-info">Delete Task</a></td>
+
+                    <td><button class="btn btn-warning" onclick="showtask('<%= user.user_id%>')">View Task</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        <div style="display: none; background-color: green; color:white;" id="<%= user.user_id%>">
+                            <b> Task is : : <%= user.user_task%> </b>
+                    </td>
+                </tr>
+                <% })%>
+        </table>
+</body>
+<script>
+    function showtask(id) {
+        var x = document.getElementById(id);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            //x.style.background = 'red';
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashbord</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <hr>
+        <div class="row">
+            <row class="col-md-8 col-lg-10 offset-1"><br>
+                <div class="alert alert-success text-center">
+                    <b style="color:#181ff1; font-size:30px;">Select User whom you want to assigntask</b>
+                </div>
+            </row>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-8  offset-2">
+                <form method="POST" action="/addtask" autocomplete="on">
+                    <div class="form-group">
+                        <label for="selectuser">Select Candidate</label>
+                        <select name="user_id" id="user" class="form-control">
+                            <option value="">Select Candidate</option>
+                            <% users.forEach(function(user){ %>
+                                <option value="<%= user.user_id%>">
+                                    <%= user.user_name%>
+                                </option>
+                                <% })%>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="addtask">Add Task to Selectd Candidate</label>
+                        <textarea name="user_task" id="" cols="30" rows="3" class="form-control"></textarea>
+                    </div>
+
+                    <input type="submit" value="Add Task" class="btn btn-success btn-block float-right">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
